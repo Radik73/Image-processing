@@ -112,7 +112,6 @@ for x in range(width):
         xiyi = np.dot(rotate_matrix_1,np.array([x - x0, y - y0])) + np.array([x0, y0])
         xi = xiyi[0]
         yi = xiyi[1]
-        print(yi)
         if 0 < xi < width-1 and 0 < yi < height-1:
             extension[x][y] = Inter(xi, yi)
             two[x][y] = Inter_for_heap(one, xi, yi)
@@ -134,7 +133,6 @@ for x in range(width):
         xiyi = np.dot(rotate_matrix_2,np.array([x - x0, y - y0])) + np.array([x0, y0])
         xi = xiyi[0]
         yi = xiyi[1]
-        print(yi)
         if 0 < xi < width-1 and 0 < yi < height-1:
             mirror[x][y] = Inter(xi, yi)
             three[x][y] = Inter_for_heap(two, xi, yi)
