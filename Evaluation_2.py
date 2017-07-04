@@ -146,47 +146,6 @@ for t in range(1, T):
     hy[t] = hy[t - 1] - np.sign(dQhy/m) * 0.04
 
 
-    # Постройка графика
-    # Набор значений по оси Y
-    if T > 100:
-        if t == 1 or (t + 1) % 100 == 0:
-            y_axis_0.append(-f[t - 1] * (180 / np.pi))
-            y_axis_1.append(1 / k[t - 1])
-            y_axis_2.append(-hx[t - 1])
-            y_axis_3.append(-hy[t - 1])
-            # Значения по оси X
-            x_values.append(t)
-    elif T < 100:
-        if t == 1 or (t + 1) % 10 == 0:
-            y_axis_0.append(-f[t - 1] * (180 / np.pi))
-            y_axis_1.append(1 / k[t - 1])
-            y_axis_2.append(-hx[t - 1])
-            y_axis_3.append(-hy[t - 1])
-            # Значения по оси X
-            x_values.append(t)
-
-line_f, line_k, line_hx, line_hy = plt.plot(x_values, y_axis_0, 'bD:', x_values, y_axis_1, 'r^:', x_values, y_axis_2, 'go:', x_values, y_axis_3)
-
-# Зададим интервалы осям
-plt.axis([0.0, T, -20.0, 20.0])
-
-# Задаем заголовок диаграммы
-plt.title(u'Зависимость показателя оценки от количества итераций')
-
-# Задаем подписи к осям X и Y
-plt.xlabel(u'Количество итераций, %')
-plt.ylabel(u'Оценка')
-
-# Задаем исходные данные для легенды и ее размещение
-plt.legend((line_f, line_k, line_hx, line_hy),
-               (u'Оценка величины угла поворота', u'Оценка параметра увеличения', u'Оценка параметра смещения по Х', u'Оценка параметра смещения по Y',), loc='best')
-
-# Включаем сетку
-plt.grid()
-plt.show()
-plt.savefig('spirit.png', format='png')
-
-
 M[0] = -f[T - 1] * (180 / np.pi)
 M[1] = (1 / k[T - 1])
 M[2] = (-hx[T - 1])
